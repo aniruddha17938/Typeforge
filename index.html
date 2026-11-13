@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TypeForge - Typing Test Platform</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<nav>
+  <b class="logo">TypeForge</b>
+  <div class="navr">
+    <button class="link" data-view="test">Typing tests</button>
+    <button class="link" data-view="history">History</button>
+    <button id="themeBtn" aria-label="Toggle light and dark theme"></button>
+  </div>
+</nav>
+<main>
+<section id="test">
+  <div class="panel" id="cfg">
+    <div class="row"><label>Test</label><div class="seg" data-k="mode">
+      <button data-v="timed">Timed</button><button data-v="full">Full page</button>
+      <button data-v="numeric">Numbers and symbols</button><button data-v="custom">Custom text</button></div></div>
+    <div class="row" data-modes="timed numeric"><label>Duration</label><div class="seg" data-k="duration">
+      <button data-v="60">1 min</button><button data-v="120">2 min</button><button data-v="180">3 min</button>
+      <button data-v="300">5 min</button><button data-v="600" data-modes="timed">10 min</button></div></div>
+    <div class="row" data-modes="full"><label>Length</label><div class="seg" data-k="pages">
+      <button data-v="1">1 page</button><button data-v="2">2 pages</button><button data-v="3">3 pages</button><button data-v="5">5 pages</button></div></div>
+    <div class="row" data-modes="numeric"><label for="ncat">Characters</label><select id="ncat" data-k="ncat">
+      <option value="numbers">Numbers only</option><option value="sequences">Numeric sequences</option>
+      <option value="special">Special characters</option><option value="currency">Currency symbols</option>
+      <option value="math">Mathematical symbols</option><option value="mixed">Mixed numbers and symbols</option></select></div>
+    <div class="row" data-modes="timed full"><label for="cat">Content</label><select id="cat" data-k="cat">
+      <option value="words">Random words</option><option value="passage">Passages</option>
+      <option value="support">Customer support sentences</option><option value="chat">Live chat</option>
+      <option value="email">Emails</option><option value="ticket">Support tickets</option></select>
+      <label for="diff">Difficulty</label><select id="diff" data-k="diff">
+      <option value="easy">Easy</option><option value="medium">Medium</option><option value="hard">Hard</option></select></div>
+    <div class="row" data-modes="timed full"><label>Filters</label>
+      <label class="chk"><input type="checkbox" data-k="caps"> Capital letters</label>
+      <label class="chk"><input type="checkbox" data-k="punct"> Punctuation</label>
+      <label class="chk"><input type="checkbox" data-k="nums"> Numbers</label>
+      <label class="chk"><input type="checkbox" data-k="gram" id="gram"> Grammatical sentences</label></div>
+    <div class="row" data-modes="custom"><label for="custom">Your text</label>
+      <textarea id="custom" rows="3" maxlength="20000" placeholder="Paste at least 20 characters to practise with"></textarea>
+      <button id="useCustom" class="btn">Use this text</button></div>
+    <div class="row free"><label for="fsize">Font size</label><input type="range" id="fsize" min="24" max="48" step="2" value="28"><output id="fsval" for="fsize">28 px</output></div>
+    <div class="row"><label>Visible lines</label><div class="seg" data-k="lines">
+      <button data-v="1">1</button><button data-v="2">2</button><button data-v="3">3</button></div></div>
+    <div class="row free" data-modes="timed numeric"><label>Timer</label><div class="seg" data-k="timer">
+      <button data-v="digital">Digital</button><button data-v="bar">Progress bar</button></div></div>
+    <p id="msg" role="alert"></p>
+  </div>
+
+  <div id="timerbox"><div id="digital">01:00</div><div id="bar"><i id="fill"></i></div></div>
+  <div id="stats" aria-live="off"></div>
+  <div id="view" tabindex="-1" aria-label="Typing area"><div id="inner"></div></div>
+  <p class="hint" id="hint">Start typing to begin. The timer starts on your first key.</p>
+  <div class="ctl"><button class="btn" id="restart">Restart</button><button class="btn" id="endBtn">End test</button></div>
+</section>
+
+<section id="results" hidden>
+  <h2>Results</h2><p id="rsub"></p>
+  <div id="rgrid"></div>
+  <h3>Your last 5 tests</h3><canvas id="graph" width="900" height="240"></canvas><p id="gnote" class="hint"></p>
+  <p class="hint" id="formula">Gross WPM = characters typed / 5 / minutes. Net WPM = Gross WPM minus (uncorrected incorrect characters / 5 / minutes). Accuracy = correct characters / characters typed. KPM = keystrokes / minutes.</p>
+  <div class="ctl"><button class="btn pri" id="again">Try again</button><button class="btn" id="change">Change settings</button></div>
+</section>
+
+<section id="history" hidden>
+  <h2>History</h2><div id="bests"></div><div class="scroll"><table id="htable"></table></div>
+</section>
+</main>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body></html>

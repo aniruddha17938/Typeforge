@@ -1,0 +1,47 @@
+:root{--bg:#eef2f6;--panel:#fff;--fg:#17202e;--mut:#8a94a6;--bd:#d6dde7;--acc:#0f766e;--ok:#0f766e;--bad:#b42318;--badbg:#fde2df;--curbg:#cdeee9;--lh:2.6rem}
+[data-theme=dark]{--bg:#0f141b;--panel:#18202b;--fg:#e8edf4;--mut:#6f7b8e;--bd:#2a3545;--acc:#4fd1c0;--ok:#4fd1c0;--bad:#ff9b92;--badbg:#4a2227;--curbg:#1f4a47}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 Manrope,system-ui,sans-serif}
+nav{display:flex;justify-content:space-between;align-items:center;padding:.8rem 1.5rem;background:var(--panel);border-bottom:1px solid var(--bd)}
+.logo{font-size:1.25rem;font-weight:800;letter-spacing:-.02em}.navr{display:flex;gap:.5rem;align-items:center}
+main{max-width:980px;margin:0 auto;padding:1.5rem 1rem 4rem}
+button,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.link,#themeBtn{background:none;border:0;padding:.4rem .7rem;border-radius:8px}.link:hover,#themeBtn:hover{background:var(--bg)}
+.panel{background:var(--panel);border:1px solid var(--bd);border-radius:12px;padding:.6rem 1rem}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .9rem;padding:.4rem 0}
+.row[hidden]{display:none}.row>label:first-child{width:6.5rem;color:var(--mut);font-weight:600}
+.seg{display:flex;flex-wrap:wrap;gap:.25rem}
+.seg button{background:var(--bg);border:1px solid var(--bd);padding:.25rem .8rem;border-radius:8px}
+.seg button[hidden]{display:none}
+.seg button.on{background:var(--acc);border-color:var(--acc);color:var(--panel);font-weight:600}
+select,textarea{background:var(--bg);border:1px solid var(--bd);border-radius:8px;padding:.3rem .5rem}
+textarea{flex:1;min-width:240px}.chk{display:flex;gap:.3rem;align-items:center}
+.locked .row:not(.free){opacity:.45;pointer-events:none}
+#msg{color:var(--bad);margin:.2rem 0;min-height:1.2em}
+#timerbox{margin:1.6rem 0 .6rem;text-align:center}
+#digital{font:600 3rem/1 "JetBrains Mono",monospace;color:var(--acc)}
+#bar{height:14px;background:var(--panel);border:1px solid var(--bd);border-radius:99px;overflow:hidden}
+#fill{display:block;height:100%;width:100%;background:hsl(120,75%,45%);transition:width .15s linear,background .5s}
+#stats{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;justify-content:center;color:var(--mut);margin-bottom:1rem;font-size:.9rem}
+#stats b{color:var(--fg);font-variant-numeric:tabular-nums}
+#view{--lines:2;position:relative;overflow:hidden;height:calc(var(--lines)*var(--lh));background:var(--panel);border:1px solid var(--bd);border-radius:12px;padding:0 1.4rem;font:400 var(--fs,28px)/var(--lh) "JetBrains Mono",monospace;color:var(--mut);outline:none}
+#inner{position:relative;white-space:pre-wrap;word-break:keep-all;transition:transform .12s ease-out}
+#view.one #inner{white-space:pre;display:inline-block}
+#inner span.ok{color:var(--ok)}
+#inner span.bad{color:var(--bad);background:var(--badbg);text-decoration:underline wavy}
+#inner span.cur{background:var(--curbg);border-bottom:3px solid var(--acc)}
+.hint{color:var(--mut);font-size:.88rem;text-align:center}
+.ctl{display:flex;gap:.6rem;justify-content:center;margin-top:1rem}
+.btn{background:var(--panel);border:1px solid var(--bd);border-radius:8px;padding:.45rem 1.1rem;font-weight:600}.btn.pri{background:var(--acc);border-color:var(--acc);color:var(--panel)}
+#rgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.7rem;margin:1rem 0}
+.m{background:var(--panel);border:1px solid var(--bd);border-radius:10px;padding:.7rem .9rem}
+.m span{display:block;color:var(--mut);font-size:.82rem}.m b{font-size:1.5rem;font-variant-numeric:tabular-nums}
+.m.hl{border:2px solid var(--acc)}
+canvas{width:100%;max-width:900px;background:var(--panel);border:1px solid var(--bd);border-radius:10px}
+table{width:100%;border-collapse:collapse;background:var(--panel)}th,td{padding:.45rem .6rem;border-bottom:1px solid var(--bd);text-align:left;font-size:.9rem}
+.scroll{overflow-x:auto}#bests{margin:.5rem 0 1rem;color:var(--mut)}
+@media(max-width:600px){#digital{font-size:2.2rem}.row>label:first-child{width:100%}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+input[type=range]{accent-color:var(--acc);width:200px}output{color:var(--mut);font-variant-numeric:tabular-nums}
